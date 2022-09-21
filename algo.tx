@@ -1,0 +1,112 @@
+algorithm exercice 1
+solution 1
+
+list1 : ARRAY_OF integer[a]
+list2 : ARRAY_OF integer[b]
+i , j : INTEGER
+sum = 0 : INTEGER
+tmp : INTEGER
+BEGIN
+FOR i FROM 0 TO list1.lenght-1 STEP 1 DO
+    tmp = 0a
+    FOR j FROM 0 TO list2.lenght-1 STEP 1 DO
+    if(list1[i] = list2[j])
+    tmp = tmp+1
+    ENDIF
+    ENDFOR
+    if(tmp = 0) sum=sum+list1[i]
+    ENDIF
+ENDFOR
+FOR j FROM 0 TO list2.lenght-1 STEP 1 DO
+    tmp = 0
+    FOR i FROM 0 TO list1.lenght-1 STEP 1 DO
+    if(list2[j] = list1[i])
+    tmp = tmp+1
+    ENDIF
+    ENDFOR
+    if(tmp = 0) sum=sum+list2[j]
+    ENDIF
+ENDFOR
+
+
+solution 2
+
+htab : HASH_table<INTEGER,INTEGER>
+list1:ARRAY_OF INTEGER[a]
+list2:ARRAY_OF INTEGER[b]
+i : INTEGER
+sum = 0 : INTEGER
+count = 0 : INTEGER
+for i from 0 to list1.length-1 STEP 1 DO
+    if(htab.lookup(list1[i])= true)
+        count = htab.get(list1[i])
+        htab.insert(list1[i],count+1)
+    else
+        htab.insert(list1[i],1)
+endfor
+for i from 0 to list2.length-1 STEP 1 DO
+    if(htab.lookup(list2[i])= true)
+        count = htab.get(list2[i])
+        htab.insert(list2[i],count+1)
+    else
+    htab.insert(list2[i],1)
+endfor
+for i FROM 0 to list1.lenght-1 STEP 1 DO
+    if(htab.get(list1[i])= 1 )
+    sum = sum +list1[i]
+    ENDIF
+ENDFOR
+for i FROM 0 to list2.lenght-1 STEP 1 DO
+    if(htab.get(list2[i])= 1 )
+    sum = sum +list2[i]
+    ENDIF
+ENDFOR
+write(sum)
+
+
+exercice 2
+
+list1 : ARRAY_OF integer[a]
+list2 : ARRAY_OF integer[b]
+i , j : INTEGER
+sum = 0 : INTEGER
+BEGIN
+FOR i FROM 0 TO list1.lenght-1 STEP 1 DO
+    FOR j FROM 0 TO list2.lenght-1 STEP 1 DO
+    if(list1[i] = list2[j])
+    sum = sum + list1[i] + list2[j]
+    ENDIF
+    ENDFOR
+ENDFOR
+END
+
+solution 2
+
+
+htab : HASH_table<INTEGER,INTEGER>
+list1:ARRAY_OF INTEGER[a]
+list2:ARRAY_OF INTEGER[b]
+i : INTEGER
+sum = 0 : INTEGER
+count = 0 : INTEGER
+for i from 0 to list1.length-1 STEP 1 DO
+    if(htab.lookup(list1[i])= true)
+        count = htab.get(list1[i])
+        htab.insert(list1[i],count+1)
+    else
+        htab.insert(list1[i],1)
+endfor
+for i from 0 to list2.length-1 STEP 1 DO
+    if(htab.lookup(list2[i])= true)
+        count = htab.get(list2[i])
+        htab.insert(list2[i],count+1)
+    else
+    htab.insert(list2[i],1)
+endfor
+for i FROM 0 to list1.lenght-1 STEP 1 DO
+    if(htab.get(list1[i])> 1 )
+    sum = sum +list1[i]
+    sum = sum*2
+    ENDIF
+ENDFOR
+write(sum)
